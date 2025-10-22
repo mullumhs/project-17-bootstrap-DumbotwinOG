@@ -5,106 +5,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  
+  <style>
+    :root {
+  --primary-color: #1e1e2f;
+  --accent-color: #00bcd4;
+  --text-color: #ffffff;
+  --hover-color: #ffd700;
+  --font-main: 'Segoe UI', sans-serif;
+}
+
+/* Global */
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: #f4f4f4; /* unified choice */
+  color: var(--text-color);
+}
+
+/* Navbar */
+.navbar {
+  position: sticky; /* keep sticky behavior */
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* unified choice */
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .logo {
+  font-size: 1.8rem; /* kept larger size */
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--hover-color);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    background-color: #2575fc;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 220px;
+    padding: 1rem;
+    border-radius: 0 0 0 8px;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Carousel */
+.carousel {
+  height: 300px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.carousel-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-inner img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .carousel-inner img {
+    height: 250px;
+  }
+}
+
+/* Friends Section */
+.friends {
+  padding: 5rem 2rem;
+  background-color: #f4f4f4;
+  text-align: center;
+  color: #333;
+}
+
+.friends h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #1e1e2f;
+}
+
+.friend-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.friend-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.friend-card:hover {
+  transform: translateY(-5px);
+}
+
+.friend-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.friend-card h3 {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #2575fc;
+}
+
+.friend-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+  
+  .footer {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 3rem 2rem 1rem;
+  margin-top: 4rem;
+  text-align: center; /* ensures text is centered */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* stack sections vertically */
+  align-items: center;    /* center horizontally */
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin: 0.5rem 0;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #ffd700;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center; /* center icons */
+}
+
+.footer-social .social-icons a {
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social .social-icons a:hover {
+  color: #ffd700;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+}
+  
+  
+  </style>
+
+
+  
   </head>
   <body>
-    
-    <!DOCTYPE html>
-<html lang="en">
 
-
-<head><!-- NAVBAR -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stylish Navbar</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-    }
-
-    .navbar {
-      position: relative;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-
-    .navbar .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      padding: 0.5rem 0.8rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .navbar ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      color: #ffd700;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    @media (max-width: 768px) {
-      .navbar ul {
-        display: none;
-        flex-direction: column;
-        background-color: #2575fc;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 220px;
-        padding: 1rem;
-        border-radius: 0 0 0 8px;
-        box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .navbar ul.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-  </style>
-</head>
-
-
-<body>
 
   <nav class="navbar">
     <div class="logo">Muddle</div>
@@ -142,27 +299,7 @@
 </script>
 
 
-<style>
-  .carousel-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
 
-  .carousel-inner img {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-
-  @media (max-width: 768px) {
-    .carousel-inner img {
-      height: 250px;
-    }
-  }
-</style>
 
 <div class="carousel-container">
   <div id="carouselExample" class="carousel slide">
@@ -197,210 +334,64 @@
     }
   </script>
 
-</body>
-
-
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minimal Concepts</title>
-  <style>
-    :root {
-      --primary-color: #1e1e2f;
-      --accent-color: #00bcd4;
-      --text-color: #ffffff;
-      --hover-color: #ffd700;
-      --font-main: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-main);
-      background-color: var(--primary-color);
-      color: var(--text-color);
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: var(--text-color);
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    ul li a {
-      text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    ul li a:hover {
-      color: var(--hover-color);
-    }
-
-    @media (max-width: 768px) {
-      ul {
-        display: none;
-        flex-direction: column;
-        background-color: var(--primary-color);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        padding: 1rem;
-        border-radius: 0 0 0 10px;
-      }
-
-      ul.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-
-    /* Carousel Placeholder */
-    .carousel {
-      height: 300px;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: bold;
-      color: white;
-    }
-
-    /* Friends Section */
-    .friends {
-      padding: 5rem 2rem;
-      background-color: #f4f4f4;
-      text-align: center;
-      color: #333;
-    }
-
-    .friends h2 {
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: #1e1e2f;
-    }
-
-    .friend-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .friend-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      padding: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .friend-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .friend-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .friend-card h3 {
-      margin-top: 1rem;
-      font-size: 1.4rem;
-      color: #2575fc;
-    }
-
-    .friend-card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-  </style>
-</head>
-<body>
-
   <section class="friends">
-    <h2>My Friends</h2>
+    <h2>🅜🅨 🅕🅡🅘🅔🅝🅓🅢</h2>
     <div class="friend-grid">
       <div class="friend-card">
         <img src="https://www.echo.net.au/wp-content/uploads/2019/09/EurekaPS.jpg" alt="Friend Alpha">
         <h3>Muddle</h3>
-        <p>Thinks Wi-Fi is a type of pasta. Still waiting for it to boil.</p>
+        <p>“ When Muddle stands up too fast, he doesn’t get dizzy — he just gets mistaken for a garden gnome.”</p>
       </div>
       <div class="friend-card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvPg9SYOFc_9Z4560ckwByaU8wzsZvpfh39A&s" alt="Friend Bravo">
         <h3>Gersh</h3>
-        <p>Invented a new dance called “The Buffering.” It’s mostly standing still.</p>
+        <p>“ Aiden doesn’t need a Halloween costume — he just shows up shirtless and people scream.”</p>
       </div>
       <div class="friend-card">
         <img src="https://content.api.news/v3/images/bin/2a327b7b38dcf0be722dedc5c755b30d" alt="Friend Charlie">
-        <h3>Toy roy</h3>
-        <p>Once tried to microwave a salad. We don’t talk about it.</p>
+        <h3>Toy Toy</h3>
+        <p>“Taylor’s so lanky, when he waves hello, planes start lining up for landing.”</p>
       </div>
     </div>
   </section>
 
 
 
-</body>
+    
 
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>My Website</h3>
+      <p>Building connections and sharing ideas with friends around the world.</p>
+    </div>
 
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Friends</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
 
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
 
-</html>
-
-    
-    
-    
-    
-    
-    
-    
+  <div class="footer-bottom">
+    <p>&copy; 2025 My Website. All rights reserved.</p>
+  </div>
+</footer>
+  
     
     
     
